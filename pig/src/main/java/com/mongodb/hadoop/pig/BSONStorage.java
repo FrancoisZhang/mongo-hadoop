@@ -44,6 +44,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import org.joda.time.DateTime;
+import java.util.Date;
 
 public class BSONStorage extends StoreFunc implements StoreMetadata {
 
@@ -109,6 +111,8 @@ public class BSONStorage extends StoreFunc implements StoreMetadata {
             case DataType.FLOAT:
             case DataType.DOUBLE:
                 return o;
+            case DataType.DATETIME:
+                return ((DateTime) o).toDate();
             case DataType.BYTEARRAY:
                 return o.toString();
             case DataType.CHARARRAY:
